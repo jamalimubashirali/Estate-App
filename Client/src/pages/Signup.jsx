@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { BASE_URL } from '../../../config';
 
 export default function Signup() {
   const [formData , setFormData] = useState({})
@@ -12,9 +13,10 @@ export default function Signup() {
   console.log(formData)
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch('http://localhost:3000/api/auth/signup', 
+    const res = await fetch(`${BASE_URL}/auth/signup`, 
     {
       method : 'POST',
+      mode: 'no-cors',
       headers : {
         'Content-Type' : 'application/json',
       },
